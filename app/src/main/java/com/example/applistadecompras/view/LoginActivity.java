@@ -9,8 +9,9 @@ import android.util.Log;
 import android.view.View;
 
 import com.example.applistadecompras.R;
+import com.example.applistadecompras.presenter.LoginPresenterContract;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, LoginPresenterContract.view {
 
     private final String TAG = "LogingActivity";
 
@@ -37,5 +38,10 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             Intent intent = new Intent(view.getContext(), CadastroUserActivity.class);
             startActivity(intent);
         }
+    }
+
+    @Override
+    public void message(String msg) {
+
     }
 }

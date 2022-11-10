@@ -3,6 +3,7 @@ package com.example.applistadecompras.repository;
 import android.content.Context;
 
 import com.example.applistadecompras.model.User;
+import com.example.applistadecompras.presenter.CadastroPresenterContract;
 
 import java.util.ArrayList;
 import java.util.List;
