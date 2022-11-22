@@ -7,7 +7,10 @@ import java.util.List;
 
 public interface UserRepositoryInterface {
 
+
+    public long addUser(User user);
+    //public long delete(User user);
     public List<User> getUsers();
-    public User addUser(String login, String senha);
-    public User deleteUser(User user) ;
+    public User getUserByUserLogin(String login);
+
 }

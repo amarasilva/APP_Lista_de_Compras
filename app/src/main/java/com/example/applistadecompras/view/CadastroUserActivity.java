@@ -1,20 +1,16 @@
 package com.example.applistadecompras.view;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import com.example.applistadecompras.R;
-import com.example.applistadecompras.adapter.UserAdapter;
-import com.example.applistadecompras.presenter.CadastroPresenterContract;
-import com.example.applistadecompras.presenter.LoginPresenterContract;
-import com.example.applistadecompras.repository.UserRepository;
-import com.example.applistadecompras.repository.UserRepositoryInterface;
+import com.example.applistadecompras.model.User;
+import com.example.applistadecompras.repository.UserSQLRepository;
 import com.google.android.material.snackbar.Snackbar;
 
 public class CadastroUserActivity extends AppCompatActivity {
@@ -22,14 +18,17 @@ public class CadastroUserActivity extends AppCompatActivity {
 
     private final String TAG = "LogingActivity";
 
-    private UserRepository UserRepository;
+    private UserSQLRepository banco;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        banco = new UserSQLRepository(getBaseContext());
+
         setContentView(R.layout.activity_cadastro_user);
 
-    UserRepository = new UserRepository();
 
         //captura o botao LAbutton1
         findViewById(R.id.buttonCAcadastrar).setOnClickListener(new View.OnClickListener() {
@@ -38,30 +37,33 @@ public class CadastroUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                EditText etlogin = findViewById(R.id.editTextTextPersonNameCAlogin);
+                EditText etsenha = findViewById(R.id.editTextTextPersonNameCAsenha);
 
-                UserRepository.addUser(
-                        ((TextView) findViewById(R.id.editTextTextPersonNameCAlogin)).getText().toString(),
-                        ((TextView) findViewById(R.id.editTextTextPersonNameCAsenha)).getText().toString()
+                User u = new User(etlogin.getText().toString(),etsenha.getText().toString());
 
+                banco.addUser(u);
 
-                );
-            Snackbar snackbar = Snackbar.make(view,"Usuário Cadastrado",Snackbar.LENGTH_LONG);
+            Snackbar snackbar = Snackbar.make(view,"Usuário Cadastrado "+banco.getUsers().get(0).getLogin(),Snackbar.LENGTH_LONG);
             snackbar.show();
 
-                Log.d(TAG, "adicionado usuário" + UserRepository.getUsers().get(0).getLogin());
+
+              Log.d(TAG, "adicionado usuário"+ banco.getUsers());
             }
 
         });
 
+        findViewById(R.id.buttonCALU).setOnClickListener(new View.OnClickListener() {
 
-//organizando o adapter
-        RecyclerView rc = findViewById(R.id.RecycleViewDeUsuarios);
-        UserAdapter adapter = new UserAdapter(UserRepository.getUsers());
-        rc.setAdapter(adapter);
-        LinearLayoutManager llm1 = new LinearLayoutManager(getApplicationContext());
-        rc.setLayoutManager(llm1);
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), UsuariosCadastradosActivity.class);
+                    startActivity(intent);
+            }
+        });
+
+
 
     }
-
-
 }
+

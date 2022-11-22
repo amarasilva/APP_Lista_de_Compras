@@ -10,17 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.applistadecompras.R;
 import com.example.applistadecompras.model.User;
+import com.example.applistadecompras.repository.UserSQLRepository;
 
 import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<User> dados;
+    private UserSQLRepository banco;
 
-    public UserAdapter(List<User> dados) {
-        this.dados = dados;
+    public UserAdapter(UserSQLRepository banco) {
+        this.banco = banco;
     }
-
 
     @NonNull
     @Override
@@ -31,7 +31,7 @@ public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        User obj = dados.get(position);
+        User obj = banco.getUsers().get(position);
         ((TextView) holder.itemView.findViewById(R.id.textViewVH_NOME)).setText(obj.getLogin());
         ((TextView) holder.itemView.findViewById(R.id.textViewVH_SENHA)).setText(obj.getSenha());
 
@@ -39,7 +39,8 @@ public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return dados.size();
+        return banco.getUsers().size();
+
     }
 
 

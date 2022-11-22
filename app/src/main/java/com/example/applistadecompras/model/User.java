@@ -10,8 +10,8 @@ public class User implements Parcelable {
     private String senha;
 
 
-    public User(int id, String login, String senha) {
-        this.id = id;
+    public User(String login, String senha) {
+
         this.login = login;
         this.senha = senha;
     }
