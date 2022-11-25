@@ -5,13 +5,18 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 
 import com.example.applistadecompras.R;
 import com.example.applistadecompras.adapter.UserAdapter;
+import com.example.applistadecompras.model.User;
 import com.example.applistadecompras.repository.UserSQLRepository;
+import com.google.android.material.snackbar.Snackbar;
 
 public class UsuariosCadastradosActivity extends AppCompatActivity {
 
+    private final String TAG = "Usuarios Cadastrados Activity";
 
     UserSQLRepository banco;
 
@@ -20,17 +25,34 @@ public class UsuariosCadastradosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_usuarios_cadastrados);
 
-        banco = new UserSQLRepository(getBaseContext());
+        banco = new UserSQLRepository(getApplicationContext());
 
-        //organizando o adapter
-        RecyclerView rc = findViewById(R.id.RecycleViewUsuarios);
-        UserAdapter adapter = new UserAdapter(banco);
-        rc.setAdapter(adapter);
-        LinearLayoutManager llm1 = new LinearLayoutManager(getApplicationContext());
-        rc.setLayoutManager(llm1);
+        //captura o botao LAbutton1
+        findViewById(R.id.buttonExcluirUser).setOnClickListener(new View.OnClickListener() {
 
 
-    }
+            @Override
+            public void onClick(View view) {
+
+                EditText exLogin = findViewById(R.id.editTextTextPersonNameExcluirLogin);
 
 
-}
+                User u = new User(exLogin.getText().toString(), "");
+
+                banco.delete(u);
+
+                Snackbar snackbar = Snackbar.make(view, "Usuário Excluido ", Snackbar.LENGTH_LONG);
+                snackbar.show();
+
+            }
+        });
+                //organizando o adapter
+                RecyclerView rc = findViewById(R.id.RecycleViewUsuarios);
+                UserAdapter adapter = new UserAdapter(banco);
+                rc.setAdapter(adapter);
+                LinearLayoutManager llm1 = new LinearLayoutManager(getApplicationContext());
+                rc.setLayoutManager(llm1);
+
+
+            }
+        }

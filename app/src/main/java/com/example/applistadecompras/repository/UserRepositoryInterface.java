@@ -9,7 +9,7 @@ public interface UserRepositoryInterface {
 
 
     public long addUser(User user);
-    //public long delete(User user);
+    public long delete(User user);
     public List<User> getUsers();
     public User getUserByUserLogin(String login);
 

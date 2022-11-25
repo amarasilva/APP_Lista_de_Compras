@@ -11,19 +11,19 @@ import android.widget.TextView;
 
 import com.example.applistadecompras.R;
 import com.example.applistadecompras.model.User;
+import com.example.applistadecompras.presenter.LoginPresenter;
 import com.example.applistadecompras.presenter.LoginPresenterContract;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
     private final String TAG = "LogingActivity";
 
-    //private LoginPresenterContract.presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        Log.d(TAG, "iniciando o APP");
+
 
         findViewById(R.id.buttonEntrar).setOnClickListener(this);
         findViewById(R.id.button2Cadastrar).setOnClickListener(this);
@@ -34,11 +34,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View view) {
         if (view.getId() == R.id.buttonEntrar) {
             //chama o checkLogin
-            LoginPresenterContract.presenter.checkLogin(
+            LoginPresenter check = new LoginPresenter();
+
+            check.checkLogin(this.findViewById(android.R.id.content), getApplicationContext(),
                     ((TextView) findViewById(R.id.editTextTextPersonNameLogin)).getText().toString(),
                     ((TextView) findViewById(R.id.editTextTextPasswordSenha)).getText().toString()
-
-
             );
 
         }

@@ -2,6 +2,7 @@ package com.example.applistadecompras.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +17,7 @@ import com.google.android.material.snackbar.Snackbar;
 public class CadastroUserActivity extends AppCompatActivity {
 
 
-    private final String TAG = "LogingActivity";
+    private final String TAG = "Cadastro User Activity";
 
     private UserSQLRepository banco;
 
@@ -25,7 +26,7 @@ public class CadastroUserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        banco = new UserSQLRepository(getBaseContext());
+        banco = new UserSQLRepository(getApplicationContext());
 
         setContentView(R.layout.activity_cadastro_user);
 
@@ -44,7 +45,7 @@ public class CadastroUserActivity extends AppCompatActivity {
 
                 banco.addUser(u);
 
-            Snackbar snackbar = Snackbar.make(view,"Usuário Cadastrado "+banco.getUsers().get(0).getLogin(),Snackbar.LENGTH_LONG);
+            Snackbar snackbar = Snackbar.make(view,"Usuário Cadastrado ",Snackbar.LENGTH_LONG);
             snackbar.show();
 
 

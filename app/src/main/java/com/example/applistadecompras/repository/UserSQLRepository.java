@@ -52,13 +52,14 @@ public class UserSQLRepository implements UserRepositoryInterface {
     }
 
     public long delete(User user) {
-        ContentValues content = new ContentValues();
-        content.put("login", user.getLogin());
-        content.put("senha", user.getSenha());
-        db = database.getWritableDatabase();
-        long tag = db.delete("users", null, content);
 
-        return tag;
+        String sql = "delete from users where login = '"+user.getLogin()+"';";
+        db = database.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+        cursor.moveToFirst();
+        do {
+            return 1;
+        } while (cursor.moveToNext());
     }
 
 
@@ -85,17 +86,20 @@ public class UserSQLRepository implements UserRepositoryInterface {
 
     @Override
     public User getUserByUserLogin(String login) {
-        users = new ArrayList<>();
-        String sql = "select login from users;";
-        db = database.getWritableDatabase();
+        User user = null;
+        String sql = "select * from users where login = '"+login+"';";
+        db = database.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
-        cursor.moveToFirst();
-        do {
-            users.add(userFromCursor(cursor));
-        } while (cursor.moveToNext());
-        return null;
+        if(!login.equals("")){
+            if(cursor.moveToFirst()) {
+                do {
+                    user = userFromCursor(cursor);
+                } while (cursor.moveToNext());
+            }
         }
+        return user;
     }
+}
 
 
 
