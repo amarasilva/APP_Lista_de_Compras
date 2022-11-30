@@ -25,7 +25,7 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/textViewVH_NOME"
+            android:id="@+id/textViewVH_LISTANOME"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView" />

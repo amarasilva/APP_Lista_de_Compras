@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">APP Lista de Compras</string>
     <string name="login">Insira seu login</string>
-    <string name="senha">Insira Sua senha</string>
+    <string name="senha">Insira sua senha</string>
     <string name="bt_entrar">ENTRAR</string>
     <string name="bt_cadastrar">Cadastrar novo usuário</string>
     <string name="bt_sair">SAIR</string>

@@ -15,7 +15,8 @@ import java.util.List;
 
 public class UserSQLRepository implements UserRepositoryInterface {
 
-    //private final String TAG = "UserSQLRepository";
+    private final String TAG = "UserSQLRepository";
+
     private static UserSQLRepository instance;
     private Context contexto;
     ArrayList<User> users;
@@ -26,7 +27,7 @@ public class UserSQLRepository implements UserRepositoryInterface {
             "senha TEXT);";
     private String SCRIPT_CRIACAO_ITENS = "create table if not exists lista (user TEXT, " +
             "item TEXT);";
-
+/*
     public static UserSQLRepository getInstance(Context contexto) {
         if (instance == null) {
             instance = new UserSQLRepository(contexto);
@@ -34,7 +35,7 @@ public class UserSQLRepository implements UserRepositoryInterface {
 
         return instance;
     }
-
+*/
     public UserSQLRepository(Context contexto) {
         database = new DataBaseHelper(contexto, SCRIPT_CRIACAO);
     }

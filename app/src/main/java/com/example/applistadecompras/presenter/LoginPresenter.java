@@ -1,7 +1,5 @@
 package com.example.applistadecompras.presenter;
 
-import android.app.Activity;
-import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
@@ -11,7 +9,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.applistadecompras.model.User;
 import com.example.applistadecompras.repository.UserSQLRepository;
 import com.example.applistadecompras.view.CadastroListasActivity;
-import com.example.applistadecompras.view.ListaActivity;
 import com.google.android.material.snackbar.Snackbar;
 
 public class LoginPresenter extends AppCompatActivity implements LoginPresenterContract.presenter {
@@ -40,6 +37,7 @@ public class LoginPresenter extends AppCompatActivity implements LoginPresenterC
     public void validLogin(Context context, User user) {
         Intent intent = new Intent(context, CadastroListasActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra("nomeUser", user.getLogin()); //aqui envia
         //view.preferencesUserUpdate(user.getId());
         context.startActivity(intent);
 

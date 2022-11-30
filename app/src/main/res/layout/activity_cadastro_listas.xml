@@ -6,30 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".view.CadastroListasActivity">
 
-    <TextView
-        android:id="@+id/textViewNomeLista"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:text="LISTAS"
-        app:layout_constraintBottom_toTopOf="@+id/RecycleViewItens"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/RecycleViewLista"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="250dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView8"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.59"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecycleViewItens"
-        android:layout_width="366dp"
-        android:layout_height="430dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNomeLista" />
-
     <EditText
-        android:id="@+id/editTextTextPersonNameCadastroItem"
+        android:id="@+id/editTextTextPersonNameCadastroLista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -41,7 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <Button
-        android:id="@+id/buttonCadastroItem"
+        android:id="@+id/buttonCadastroLista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="119dp"
@@ -49,42 +41,44 @@
         android:text="CADASTRAR LISTA"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonNameCadastroItem" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonNameCadastroLista" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/editTextTextPersonNameListaExclusao"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="101dp"
+        android:layout_marginStart="101dp"
+        android:layout_marginEnd="100dp"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCadastroItem" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonCadastroLista" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/buttonExcluiLista"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="133dp"
         android:layout_marginEnd="134dp"
+        android:layout_marginBottom="44dp"
         android:text="EXCLUIR LISTA"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonNameListaExclusao"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginEnd="163dp"
-        android:text="Nome da lista"
+        android:layout_marginStart="137dp"
+        android:layout_marginEnd="138dp"
+        android:text="Insira o Nome da lista"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RecycleViewItens" />
+        app:layout_constraintTop_toBottomOf="@+id/RecycleViewLista" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

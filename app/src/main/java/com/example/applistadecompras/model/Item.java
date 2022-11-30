@@ -1,11 +1,11 @@
 package com.example.applistadecompras.model;
 
-public class ListaItens {
+public class Item {
 
     private int id;
     private String nomeitem;
 
-    public ListaItens(int id, String nomeitem) {
+    public Item(int id, String nomeitem) {
         this.id = id;
         this.nomeitem = nomeitem;
     }
