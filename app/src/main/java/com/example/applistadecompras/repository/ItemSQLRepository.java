@@ -41,7 +41,7 @@ public class ItemSQLRepository implements ItemRepositoryInterface {
     @Override
     public long deleteItem(String idLista, Item item) {
 
-        String sql = "delete from lista_item where item = '"+item.getNomeitem()+"' AND id_lista = '"+idLista+"'";
+        String sql = "delete from lista_item where item = '" + item.getNomeitem() + "' AND id_lista = '" + idLista + "'";
         db = database.getWritableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
         cursor.moveToFirst();
@@ -66,10 +66,10 @@ public class ItemSQLRepository implements ItemRepositoryInterface {
     @Override
     public List<Item> getItemByLista(String idLista) {
         item = new ArrayList<>();
-        String sql = "select * from lista_item where id_lista = '"+idLista+"';";
+        String sql = "select * from lista_item where id_lista = '" + idLista + "';";
         db = database.getWritableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             do {
                 item.add(ItemFromCursor(cursor));
             } while (cursor.moveToNext());
@@ -77,21 +77,8 @@ public class ItemSQLRepository implements ItemRepositoryInterface {
         return item;
     }
 
-   /* @Override
-    public List<Item> getItemByLista(String nomeLista) {
-        item = new ArrayList<>();
-        String sql = "select * from lista_item where user = '"+user+"';";
-        db = database.getWritableDatabase();
-        Cursor cursor = db.rawQuery(sql, null);
-        if(cursor.moveToFirst())
-            do {
-                lista.add(listaFromCursor(cursor));
-            } while (cursor.moveToNext());
-        return lista;
-    }
-*/
-   @Override
-   public User getItemBynome(String nomeItem) {
+    @Override
+    public User getItemBynome(String nomeItem) {
         return null;
     }
 
@@ -102,7 +89,6 @@ public class ItemSQLRepository implements ItemRepositoryInterface {
         ;
         return item;
     }
-
 
 
 }

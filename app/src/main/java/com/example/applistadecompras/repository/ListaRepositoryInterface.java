@@ -9,9 +9,10 @@ public interface ListaRepositoryInterface {
 
 
     public long addLista(Lista lista);
-    public long deleteLista(Lista lista);
-    public List<Lista> getLista();
 
+    public long deleteLista(Lista lista);
+
+    public List<Lista> getLista();
 
     List<Lista> getListaByLogin(String user);
 

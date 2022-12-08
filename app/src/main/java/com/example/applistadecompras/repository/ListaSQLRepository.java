@@ -39,7 +39,7 @@ public class ListaSQLRepository implements ListaRepositoryInterface {
     @Override
     public long deleteLista(Lista lista) {
 
-        String sql = "delete from lista where nome = '"+lista.getNome()+"' and user = '"+lista.getUser().getLogin()+"';";
+        String sql = "delete from lista where nome = '" + lista.getNome() + "' and user = '" + lista.getUser().getLogin() + "';";
         db = database.getWritableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
         cursor.moveToFirst();
@@ -60,26 +60,28 @@ public class ListaSQLRepository implements ListaRepositoryInterface {
         } while (cursor.moveToNext());
         return lista;
     }
+
     @Override
     public List<Lista> getListaByLogin(String user) {
         lista = new ArrayList<>();
-        String sql = "select * from lista where user = '"+user+"';";
+        String sql = "select * from lista where user = '" + user + "';";
         db = database.getWritableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             do {
                 lista.add(listaFromCursor(cursor));
             } while (cursor.moveToNext());
         }
         return lista;
     }
+
     @Override
     public List<Lista> getListaByLoginID(String user, String nomeLista) {
         lista = new ArrayList<>();
-        String sql = "select * from lista where user = '"+user+"' and nome = '"+nomeLista+"';";
+        String sql = "select * from lista where user = '" + user + "' and nome = '" + nomeLista + "';";
         db = database.getWritableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
-        if(cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             do {
                 lista.add(listaFromCursor(cursor));
             } while (cursor.moveToNext());
@@ -100,7 +102,6 @@ public class ListaSQLRepository implements ListaRepositoryInterface {
         ;
         return lista;
     }
-
 
 
 }

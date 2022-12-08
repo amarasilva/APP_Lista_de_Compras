@@ -19,6 +19,7 @@ public class ListaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     private ListaSQLRepository banco;
     String user;
+
     public ListaAdapter(ListaSQLRepository banco, String user) {
         this.user = user;
         this.banco = banco;
@@ -33,16 +34,16 @@ public class ListaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        if(!banco.getListaByLogin(user).isEmpty()&&position<banco.getListaByLogin(user).size()){
+        if (!banco.getListaByLogin(user).isEmpty() && position < banco.getListaByLogin(user).size()) {
             Lista obj = banco.getListaByLogin(user).get(position);
             ((TextView) holder.itemView.findViewById(R.id.textViewVH_ITEM)).setText(obj.getNome());
 
             //insere clic no viewholder
-            holder.itemView.setOnClickListener((view)->{
+            holder.itemView.setOnClickListener((view) -> {
                 Intent intent = new Intent(view.getContext(), CadastroItensActivity.class);
-                intent.putExtra("idLista", ""+banco.getListaByLoginID(user, obj.getNome()).get(0).getId()); //aqui envia
+                intent.putExtra("idLista", "" + banco.getListaByLoginID(user, obj.getNome()).get(0).getId()); //aqui envia
                 intent.putExtra("nomeUser", user); //aqui envia
-                Log.d("TESTE", ">:>:>:>:>:>:>"+banco.getListaByLoginID(user, obj.getNome()).get(0).getId());
+                Log.d("TESTE", ">:>:>:>:>:>:>" + banco.getListaByLoginID(user, obj.getNome()).get(0).getId());
                 view.getContext().startActivity(intent);
             });
         }

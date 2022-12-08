@@ -25,6 +25,7 @@ public class CadastroItensActivity extends AppCompatActivity {
 
     String idLista;
     String nomeUser;
+
     //instancia do banco
     private ItemSQLRepository banco;
 
@@ -34,6 +35,7 @@ public class CadastroItensActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cadastro_itens);
 
+        //cria o banco
         banco = new ItemSQLRepository(getApplicationContext());
 
         idLista = getIntent().getStringExtra("idLista");// aqui recebe
@@ -48,6 +50,8 @@ public class CadastroItensActivity extends AppCompatActivity {
 
                 String nomeItem = ((TextView) findViewById(R.id.editTextTextPersonNameCadastroItem)).getText().toString();
                 Item item = new Item(Integer.parseInt(idLista), nomeItem);
+
+                //adiciona o item
                 banco.addItem(idLista, item);
 
                 Snackbar snackbar = Snackbar.make(view, "Item Cadastrado ", Snackbar.LENGTH_LONG);
@@ -69,11 +73,12 @@ public class CadastroItensActivity extends AppCompatActivity {
 
                 String nomeLista = ((TextView) findViewById(R.id.editTextTextPersonNameExclusaoItem)).getText().toString();
                 Item item = new Item(Integer.parseInt(idLista), nomeLista);
+
+                //exclui item
                 banco.deleteItem(idLista, item);
 
                 Snackbar snackbar = Snackbar.make(view, "Item excluido ", Snackbar.LENGTH_LONG);
                 snackbar.show();
-
 
                 Intent intent = new Intent(view.getContext(), CadastroItensActivity.class);
                 intent.putExtra("idLista", idLista); //aqui envia
@@ -99,7 +104,6 @@ public class CadastroItensActivity extends AppCompatActivity {
 
 
         //organizando o adapter
-        //nomeUser = getIntent().getStringExtra("nomeUser");// aqui recebe
         RecyclerView rc = findViewById(R.id.RecycleViewItens);
         ItensAdapter adapter = new ItensAdapter(banco, idLista);
         rc.setAdapter(adapter);

@@ -17,7 +17,7 @@ import com.example.applistadecompras.presenter.LoginPresenter;
 import com.example.applistadecompras.presenter.LoginPresenterContract;
 import com.example.applistadecompras.repository.UserSQLRepository;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener,LoginPresenterContract.view {
+public class LoginActivity extends AppCompatActivity implements View.OnClickListener, LoginPresenterContract.view {
 
     private final String TAG = "LogingActivity";
 
@@ -46,6 +46,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         String login = ((TextView) findViewById(R.id.editTextTextPersonNameLogin)).getText().toString();
         String senha = ((TextView) findViewById(R.id.editTextTextPasswordSenha)).getText().toString();
         if (view.getId() == R.id.buttonEntrar) {
+
             //chama o checkLogin
             LoginPresenter check = new LoginPresenter();
 
@@ -55,8 +56,11 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             );
 
         }
+
+        //direcionamento para a tela de cadastro de usuarios
         if (view.getId() == R.id.button2Cadastrar) {
             Intent intent = new Intent(view.getContext(), CadastroUserActivity.class);
+
             Log.d(TAG, "enviando usuário >>>>>> " + login);
 
             startActivity(intent);

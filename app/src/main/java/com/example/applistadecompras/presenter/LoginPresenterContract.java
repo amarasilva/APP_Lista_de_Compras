@@ -13,6 +13,7 @@ public class LoginPresenterContract {
     }
 
     public interface presenter {
+
         public void checkLogin(View view, Context context, String login, String senha);
 
         public void validLogin(Context context, User user);

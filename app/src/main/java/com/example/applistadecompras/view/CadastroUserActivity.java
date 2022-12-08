@@ -18,6 +18,7 @@ public class CadastroUserActivity extends AppCompatActivity {
 
 
     private final String TAG = "CadastroUserActivity";
+
     //instancia do banco
     private UserSQLRepository banco;
 
@@ -30,8 +31,7 @@ public class CadastroUserActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_cadastro_user);
 
-
-        //captura o botao LAbutton1
+        //captura o botao de cadastro
         findViewById(R.id.buttonCAcadastrar).setOnClickListener(new View.OnClickListener() {
 
 

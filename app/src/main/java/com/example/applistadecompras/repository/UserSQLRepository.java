@@ -1,12 +1,11 @@
 package com.example.applistadecompras.repository;
 
-import android.app.Activity;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
+
 
 import com.example.applistadecompras.model.User;
 
@@ -27,19 +26,10 @@ public class UserSQLRepository implements UserRepositoryInterface {
             "senha TEXT);";
     private String SCRIPT_CRIACAO_ITENS = "create table if not exists lista (user TEXT, " +
             "item TEXT);";
-/*
-    public static UserSQLRepository getInstance(Context contexto) {
-        if (instance == null) {
-            instance = new UserSQLRepository(contexto);
-        }
 
-        return instance;
-    }
-*/
     public UserSQLRepository(Context contexto) {
         database = new DataBaseHelper(contexto, SCRIPT_CRIACAO);
     }
-
 
     @Override
     public long addUser(User user) {
@@ -54,7 +44,7 @@ public class UserSQLRepository implements UserRepositoryInterface {
 
     public long delete(User user) {
 
-        String sql = "delete from users where login = '"+user.getLogin()+"';";
+        String sql = "delete from users where login = '" + user.getLogin() + "';";
         db = database.getWritableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
         cursor.moveToFirst();
@@ -62,8 +52,6 @@ public class UserSQLRepository implements UserRepositoryInterface {
             return 1;
         } while (cursor.moveToNext());
     }
-
-
 
     private User userFromCursor(Cursor cursor) {
         User user = new User(
@@ -75,8 +63,8 @@ public class UserSQLRepository implements UserRepositoryInterface {
     @Override
     public User getUserById(int id) {
         User user = null;
-        String sql = "select * from users where id = '"+id+"';";
-        String[] args = {""+id};
+        String sql = "select * from users where id = '" + id + "';";
+        String[] args = {"" + id};
         db = database.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
         if (cursor.moveToFirst()) {
@@ -103,11 +91,11 @@ public class UserSQLRepository implements UserRepositoryInterface {
     @Override
     public User getUserByUserLogin(String login) {
         User user = null;
-        String sql = "select * from users where login = '"+login+"';";
+        String sql = "select * from users where login = '" + login + "';";
         db = database.getReadableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
-        if(!login.equals("")){
-            if(cursor.moveToFirst()) {
+        if (!login.equals("")) {
+            if (cursor.moveToFirst()) {
                 do {
                     user = userFromCursor(cursor);
                 } while (cursor.moveToNext());

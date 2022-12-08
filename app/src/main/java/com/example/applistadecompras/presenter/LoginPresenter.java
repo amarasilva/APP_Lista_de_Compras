@@ -21,15 +21,15 @@ public class LoginPresenter extends AppCompatActivity implements LoginPresenterC
         banco2 = new UserSQLRepository(context);
 
         User user = banco2.getUserByUserLogin(login);
-        if(user != null){
-            if(user.getSenha().equals(senha)){
+        if (user != null) {
+            if (user.getSenha().equals(senha)) {
                 validLogin(context, user);
-            }else{
-                Snackbar snackbar = Snackbar.make(view,"Usuário Inválido ",Snackbar.LENGTH_LONG);
+            } else {
+                Snackbar snackbar = Snackbar.make(view, "Usuário Inválido ", Snackbar.LENGTH_LONG);
                 snackbar.show();
             }
-        }else{
-            Snackbar snackbar = Snackbar.make(view,"Usuário em branco ou inválido ",Snackbar.LENGTH_LONG);
+        } else {
+            Snackbar snackbar = Snackbar.make(view, "Usuário em branco ou inválido ", Snackbar.LENGTH_LONG);
             snackbar.show();
         }
 

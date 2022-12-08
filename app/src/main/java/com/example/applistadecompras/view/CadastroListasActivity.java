@@ -20,7 +20,9 @@ import com.google.android.material.snackbar.Snackbar;
 public class CadastroListasActivity extends AppCompatActivity {
 
     private final String TAG = "CadastroListaActivity";
+
     String nomeUser;
+
     //instancia do banco
     private ListaSQLRepository banco;
 
@@ -32,6 +34,7 @@ public class CadastroListasActivity extends AppCompatActivity {
         banco = new ListaSQLRepository(getApplicationContext());
 
         nomeUser = getIntent().getStringExtra("nomeUser");// aqui recebe
+
         Log.d(TAG, "recebido usuário >>>>>> " + nomeUser);
         findViewById(R.id.buttonInsereLista).setOnClickListener(new View.OnClickListener() {
 
@@ -41,6 +44,8 @@ public class CadastroListasActivity extends AppCompatActivity {
 
                 String nomeLista = ((TextView) findViewById(R.id.editTextTextPersonNameCadastroLista)).getText().toString();
                 Lista lista = new Lista(-1, nomeLista, new User(nomeUser, ""));
+
+                //adição de lista
                 banco.addLista(lista);
 
                 Snackbar snackbar = Snackbar.make(view, "Lista Cadastrada ", Snackbar.LENGTH_LONG);
@@ -48,7 +53,7 @@ public class CadastroListasActivity extends AppCompatActivity {
                 Log.d(TAG, "adicionado usuário" + banco.getLista().get(0).getNome());
 
                 Intent intent = new Intent(view.getContext(), CadastroItensActivity.class);
-                String idLista = banco.getListaByLoginID(nomeUser, nomeLista).get(0).getId()+"";
+                String idLista = banco.getListaByLoginID(nomeUser, nomeLista).get(0).getId() + "";
                 Log.d(TAG, "adicionado lista num " + idLista);
                 intent.putExtra("idLista", idLista); //aqui envia
                 intent.putExtra("nomeUser", nomeUser); //aqui envia
@@ -64,6 +69,8 @@ public class CadastroListasActivity extends AppCompatActivity {
 
                 String nomeLista = ((TextView) findViewById(R.id.editTextTextPersonNameExclusaoLista)).getText().toString();
                 Lista lista = new Lista(-1, nomeLista, new User(nomeUser, ""));
+
+                //exclusão de lista
                 banco.deleteLista(lista);
 
                 Snackbar snackbar = Snackbar.make(view, "Lista excluida ", Snackbar.LENGTH_LONG);
