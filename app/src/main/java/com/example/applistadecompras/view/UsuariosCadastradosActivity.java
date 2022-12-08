@@ -16,8 +16,9 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class UsuariosCadastradosActivity extends AppCompatActivity {
 
-    private final String TAG = "Usuarios Cadastrados Activity";
+    private final String TAG = "UsuariosCadastradosActivity";
 
+    //instancia do banco
     UserSQLRepository banco;
 
     @Override
@@ -27,7 +28,7 @@ public class UsuariosCadastradosActivity extends AppCompatActivity {
 
         banco = new UserSQLRepository(getApplicationContext());
 
-        //captura o botao LAbutton1
+        //captura Do botao EXCLUIR
         findViewById(R.id.buttonExcluirUser).setOnClickListener(new View.OnClickListener() {
 
 
@@ -36,23 +37,24 @@ public class UsuariosCadastradosActivity extends AppCompatActivity {
 
                 EditText exLogin = findViewById(R.id.editTextTextPersonNameExcluirLogin);
 
-
                 User u = new User(exLogin.getText().toString(), "");
 
                 banco.delete(u);
 
+                //menssagem exibida na tela
                 Snackbar snackbar = Snackbar.make(view, "Usuário Excluido ", Snackbar.LENGTH_LONG);
                 snackbar.show();
 
             }
         });
-                //organizando o adapter
-                RecyclerView rc = findViewById(R.id.RecycleViewUsuarios);
-                UserAdapter adapter = new UserAdapter(banco);
-                rc.setAdapter(adapter);
-                LinearLayoutManager llm1 = new LinearLayoutManager(getApplicationContext());
-                rc.setLayoutManager(llm1);
+
+        //organizando o adapter
+        RecyclerView rc = findViewById(R.id.RecycleViewUsuarios);
+        UserAdapter adapter = new UserAdapter(banco);
+        rc.setAdapter(adapter);
+        LinearLayoutManager llm1 = new LinearLayoutManager(getApplicationContext());
+        rc.setLayoutManager(llm1);
 
 
-            }
-        }
+    }
+}

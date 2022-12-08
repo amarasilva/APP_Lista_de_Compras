@@ -2,6 +2,8 @@ package com.example.applistadecompras.presenter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -35,10 +37,17 @@ public class LoginPresenter extends AppCompatActivity implements LoginPresenterC
 
     @Override
     public void validLogin(Context context, User user) {
+
+        //SharedPreferences
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        editor.putString("user", user.getLogin());
+        editor.apply();
+
         Intent intent = new Intent(context, CadastroListasActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra("nomeUser", user.getLogin()); //aqui envia
-        //view.preferencesUserUpdate(user.getId());
         context.startActivity(intent);
 
 

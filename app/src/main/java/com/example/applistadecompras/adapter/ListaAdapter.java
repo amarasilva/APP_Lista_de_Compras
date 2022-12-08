@@ -1,6 +1,7 @@
 package com.example.applistadecompras.adapter;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.applistadecompras.R;
 import com.example.applistadecompras.model.Lista;
-import com.example.applistadecompras.model.User;
 import com.example.applistadecompras.repository.ListaSQLRepository;
 import com.example.applistadecompras.view.CadastroItensActivity;
 
@@ -35,11 +35,14 @@ public class ListaAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> 
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if(!banco.getListaByLogin(user).isEmpty()&&position<banco.getListaByLogin(user).size()){
             Lista obj = banco.getListaByLogin(user).get(position);
-            ((TextView) holder.itemView.findViewById(R.id.textViewVH_LISTANOME)).setText(obj.getNome());
+            ((TextView) holder.itemView.findViewById(R.id.textViewVH_ITEM)).setText(obj.getNome());
 
             //insere clic no viewholder
             holder.itemView.setOnClickListener((view)->{
                 Intent intent = new Intent(view.getContext(), CadastroItensActivity.class);
+                intent.putExtra("idLista", ""+banco.getListaByLoginID(user, obj.getNome()).get(0).getId()); //aqui envia
+                intent.putExtra("nomeUser", user); //aqui envia
+                Log.d("TESTE", ">:>:>:>:>:>:>"+banco.getListaByLoginID(user, obj.getNome()).get(0).getId());
                 view.getContext().startActivity(intent);
             });
         }

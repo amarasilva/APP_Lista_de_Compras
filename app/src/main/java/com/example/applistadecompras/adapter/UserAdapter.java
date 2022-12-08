@@ -30,7 +30,7 @@ public class UserAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         User obj = banco.getUsers().get(position);
-        ((TextView) holder.itemView.findViewById(R.id.textViewVH_LISTANOME)).setText(obj.getLogin());
+        ((TextView) holder.itemView.findViewById(R.id.textViewVH_ITEM)).setText(obj.getLogin());
         ((TextView) holder.itemView.findViewById(R.id.textViewVH_SENHA)).setText(obj.getSenha());
 
     }

@@ -17,8 +17,8 @@ import com.google.android.material.snackbar.Snackbar;
 public class CadastroUserActivity extends AppCompatActivity {
 
 
-    private final String TAG = "Cadastro User Activity";
-
+    private final String TAG = "CadastroUserActivity";
+    //instancia do banco
     private UserSQLRepository banco;
 
 
@@ -41,15 +41,15 @@ public class CadastroUserActivity extends AppCompatActivity {
                 EditText etlogin = findViewById(R.id.editTextTextPersonNameCAlogin);
                 EditText etsenha = findViewById(R.id.editTextTextPersonNameCAsenha);
 
-                User u = new User(etlogin.getText().toString(),etsenha.getText().toString());
+                User u = new User(etlogin.getText().toString(), etsenha.getText().toString());
 
                 banco.addUser(u);
 
-            Snackbar snackbar = Snackbar.make(view,"Usuário Cadastrado ",Snackbar.LENGTH_LONG);
-            snackbar.show();
+                Snackbar snackbar = Snackbar.make(view, "Usuário Cadastrado ", Snackbar.LENGTH_LONG);
+                snackbar.show();
 
 
-              Log.d(TAG, "adicionado usuário"+ banco.getUsers());
+                Log.d(TAG, "adicionado usuário" + banco.getUsers());
             }
 
         });
@@ -59,10 +59,9 @@ public class CadastroUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), UsuariosCadastradosActivity.class);
-                    startActivity(intent);
+                startActivity(intent);
             }
         });
-
 
 
     }

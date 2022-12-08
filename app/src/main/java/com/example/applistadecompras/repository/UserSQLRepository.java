@@ -73,6 +73,21 @@ public class UserSQLRepository implements UserRepositoryInterface {
     }
 
     @Override
+    public User getUserById(int id) {
+        User user = null;
+        String sql = "select * from users where id = '"+id+"';";
+        String[] args = {""+id};
+        db = database.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+        if (cursor.moveToFirst()) {
+            return userFromCursor(cursor);
+        } else {
+            return null;
+        }
+    }
+
+
+    @Override
     public List<User> getUsers() {
         users = new ArrayList<>();
         String sql = "select login, senha from users;";

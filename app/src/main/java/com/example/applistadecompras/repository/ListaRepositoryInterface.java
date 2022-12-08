@@ -15,6 +15,8 @@ public interface ListaRepositoryInterface {
 
     List<Lista> getListaByLogin(String user);
 
+    List<Lista> getListaByLoginID(String user, String nomeLista);
+
     public User getListaBynome(String nome);
 
 

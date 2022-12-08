@@ -12,5 +12,6 @@ public interface UserRepositoryInterface {
     public long delete(User user);
     public List<User> getUsers();
     public User getUserByUserLogin(String login);
+    public User getUserById(int id);
 
 }

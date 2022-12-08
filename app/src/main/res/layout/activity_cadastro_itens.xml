@@ -4,79 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.CadastroListasActivity">
+    tools:context=".view.CadastroItensActivity">
 
     <TextView
-        android:id="@+id/textViewNomeLista"
+        android:id="@+id/textViewNomeItens"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="186dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="187dp"
+        android:layout_marginBottom="6dp"
         android:text="ITENS"
-        app:layout_constraintBottom_toTopOf="@+id/RecycleViewLista"
+        app:layout_constraintBottom_toTopOf="@+id/RecycleViewItens"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RecycleViewLista"
-        android:layout_width="366dp"
-        android:layout_height="430dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonNameCadastroLista"
+        android:id="@+id/RecycleViewItens"
+        android:layout_width="408dp"
+        android:layout_height="306dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonNameCadastroItem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNomeLista" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewNomeItens" />
 
     <EditText
-        android:id="@+id/editTextTextPersonNameCadastroLista"
+        android:id="@+id/editTextTextPersonNameCadastroItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginEnd="101dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/buttonCadastroLista"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/RecycleViewLista" />
-
-    <Button
-        android:id="@+id/buttonCadastroLista"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="119dp"
-        android:layout_marginEnd="119dp"
-        android:text="INSERIR ITEM"
-        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonNameListaExclusao"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonNameCadastroLista" />
-
-    <EditText
-        android:id="@+id/editTextTextPersonNameListaExclusao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="101dp"
+        android:layout_marginTop="2dp"
         android:layout_marginEnd="100dp"
+        android:layout_marginBottom="1dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/buttonExcluiLista"
+        app:layout_constraintBottom_toTopOf="@+id/buttonInsereItem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonCadastroLista" />
+        app:layout_constraintTop_toBottomOf="@+id/RecycleViewItens" />
 
     <Button
-        android:id="@+id/buttonExcluiLista"
+        android:id="@+id/buttonInsereItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="133dp"
-        android:layout_marginEnd="133dp"
+        android:layout_marginStart="138dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="138dp"
+        android:text="INSERIR ITEM"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonNameExclusaoItem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonNameCadastroItem" />
+
+    <EditText
+        android:id="@+id/editTextTextPersonNameExclusaoItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="101dp"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="4dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/buttonExcluiItem"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonInsereItem" />
+
+    <Button
+        android:id="@+id/buttonExcluiItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="137dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="136dp"
+        android:layout_marginBottom="5dp"
         android:text="EXCLUIR ITEM"
+        app:layout_constraintBottom_toTopOf="@+id/buttonVoltarLista"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonNameExclusaoItem" />
+
+    <Button
+        android:id="@+id/buttonVoltarLista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="96dp"
+        android:layout_marginEnd="96dp"
+        android:text="VOLTAR PARA AS LISTAS"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonNameListaExclusao" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonExcluiItem" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

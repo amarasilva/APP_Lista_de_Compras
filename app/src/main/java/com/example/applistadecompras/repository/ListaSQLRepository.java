@@ -66,10 +66,24 @@ public class ListaSQLRepository implements ListaRepositoryInterface {
         String sql = "select * from lista where user = '"+user+"';";
         db = database.getWritableDatabase();
         Cursor cursor = db.rawQuery(sql, null);
-        if(cursor.moveToFirst())
-        do {
-            lista.add(listaFromCursor(cursor));
-        } while (cursor.moveToNext());
+        if(cursor.moveToFirst()) {
+            do {
+                lista.add(listaFromCursor(cursor));
+            } while (cursor.moveToNext());
+        }
+        return lista;
+    }
+    @Override
+    public List<Lista> getListaByLoginID(String user, String nomeLista) {
+        lista = new ArrayList<>();
+        String sql = "select * from lista where user = '"+user+"' and nome = '"+nomeLista+"';";
+        db = database.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sql, null);
+        if(cursor.moveToFirst()) {
+            do {
+                lista.add(listaFromCursor(cursor));
+            } while (cursor.moveToNext());
+        }
         return lista;
     }
 
